@@ -1,23 +1,35 @@
-\body {
+/* Background */
+body {
   font-family: Arial;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb, #a6c1ee);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
   padding: 20px;
-  overflow-x: hidden;
 }
 
-/* Container entry animation */
+/* Moving gradient animation */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glass container */
 .container {
   max-width: 600px;
   margin: auto;
-  background: white;
   padding: 25px;
-  border-radius: 15px;
+  border-radius: 20px;
   text-align: center;
+
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 
   animation: slideFade 0.8s ease;
 }
 
-/* Slide + Fade */
+/* Slide animation */
 @keyframes slideFade {
   from {
     transform: translateY(60px);
@@ -29,41 +41,47 @@
   }
 }
 
-/* Input animation */
+/* Inputs */
 input {
   margin: 10px;
   padding: 12px;
   width: 80%;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  transition: all 0.3s ease;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.6);
+  transition: 0.3s;
 }
 
 input:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 10px #667eea;
+  background: white;
+  box-shadow: 0 0 10px #ff758c;
   transform: scale(1.05);
 }
 
-/* Button animation */
+/* Buttons (colorful gradient) */
 button {
   margin: 10px;
   padding: 12px 20px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
-  background: #667eea;
   color: white;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-weight: bold;
+
+  background: linear-gradient(45deg, #ff758c, #ff7eb3, #6a11cb, #2575fc);
+  background-size: 300%;
+
+  transition: all 0.4s ease;
 }
 
 button:hover {
-  background: #5a67d8;
-  transform: translateY(-3px) scale(1.1);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  background-position: right;
+  transform: scale(1.1);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
-/* Table animation */
+/* Table */
 table {
   width: 100%;
   margin-top: 20px;
@@ -71,37 +89,25 @@ table {
   animation: fadeIn 1s ease;
 }
 
-th, td {
-  border: 1px solid #ddd;
-  padding: 10px;
+th {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: white;
 }
 
-/* Row hover effect */
+th, td {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Row hover */
 tr:hover {
-  background: #f1f1f1;
+  background: rgba(255,255,255,0.4);
   transform: scale(1.02);
   transition: 0.3s;
 }
 
-/* Fade animation */
+/* Fade */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-
-/* Page transition overlay */
-.page-transition {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: #667eea;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  animation: fadeOut 0.6s forwards;
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; visibility: hidden; }
 }
