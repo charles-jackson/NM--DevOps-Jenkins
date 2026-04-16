@@ -1,37 +1,78 @@
 body {
-font-family: Arial;
-background: #f4f4f4;
-padding: 20px;
+  font-family: Arial;
+  background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+  padding: 20px;
 }
 
+/* Container animation */
 .container {
-max-width: 600px;
-margin: auto;
-background: white;
-padding: 20px;
-border-radius: 10px;
-text-align: center;
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  animation: slideUp 0.8s ease;
 }
 
-input, button {
-margin: 5px;
-padding: 10px;
+/* Slide animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
+/* Inputs */
+input {
+  margin: 8px;
+  padding: 10px;
+  width: 80%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px #007bff;
+}
+
+/* Buttons */
 button {
-background: blue;
-color: white;
-border: none;
-cursor: pointer;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
+button:hover {
+  background: #0056b3;
+  transform: scale(1.1);
+}
+
+/* Table */
 table {
-width: 100%;
-margin-top: 20px;
-border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  animation: fadeIn 1s ease;
 }
 
 th, td {
-border: 1px solid #ddd;
-padding: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
