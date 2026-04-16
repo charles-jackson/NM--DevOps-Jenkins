@@ -3,11 +3,14 @@
 <head>
   <title>Report</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-<body onload="displayReport()">
+<body>
+
+<div class="bg-overlay"></div>
 
 <div class="container">
-  <h2>Stock Report</h2>
+  <h2>📊 Stock Report</h2>
 
   <table>
     <thead>
@@ -19,9 +22,8 @@
     <tbody id="reportTable"></tbody>
   </table>
 
-  <button onclick="goTo('home.html')">Back</button>
+  <button onclick="goTo('home.html')">⬅ Back</button>
 </div>
 
-<script src="script.js"></script>
 </body>
 </html>

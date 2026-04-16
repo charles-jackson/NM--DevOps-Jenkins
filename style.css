@@ -1,93 +1,75 @@
-/* Animated colorful background */
+/* Background image + gradient */
 body {
   font-family: Arial;
-  background: linear-gradient(-45deg, #ff6a00, #ee0979, #00c9ff, #92fe9d);
-  background-size: 400% 400%;
-  animation: gradientMove 10s ease infinite;
-  padding: 20px;
+  background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") no-repeat center/cover;
+  margin: 0;
   color: white;
 }
 
-/* Background animation */
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Dark overlay for readability */
+.bg-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.4));
+  z-index: -1;
 }
 
-/* Container (NO white) */
+/* Container */
 .container {
   max-width: 600px;
-  margin: auto;
+  margin: 80px auto;
   padding: 25px;
   border-radius: 20px;
   text-align: center;
 
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  background: linear-gradient(135deg, #ff00cc, #3333ff);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
 
-  animation: slideUp 0.8s ease;
+  animation: popIn 0.8s ease;
 }
 
-/* Entry animation */
-@keyframes slideUp {
+/* Animation */
+@keyframes popIn {
   from {
-    transform: translateY(60px);
+    transform: scale(0.8);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: scale(1);
     opacity: 1;
   }
 }
 
-/* Headings */
-h2 {
-  color: #ffe600;
-  text-shadow: 2px 2px 5px black;
-}
-
-/* Inputs (colorful) */
+/* Inputs */
 input {
   margin: 10px;
   padding: 12px;
   width: 80%;
-  border-radius: 12px;
+  border-radius: 10px;
   border: none;
-  outline: none;
-
   background: linear-gradient(45deg, #ff9a9e, #fad0c4);
   color: black;
   font-weight: bold;
-
-  transition: 0.3s;
 }
 
-input:focus {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px yellow;
-}
-
-/* Buttons (multi-color gradient) */
+/* Buttons */
 button {
   margin: 10px;
   padding: 12px 20px;
-  border-radius: 12px;
+  border-radius: 10px;
   border: none;
   color: white;
-  font-weight: bold;
   cursor: pointer;
 
-  background: linear-gradient(45deg, #ff0000, #ff8c00, #ffd700, #00ff00, #00c9ff, #8a2be2);
+  background: linear-gradient(45deg, red, orange, yellow, green, blue, purple);
   background-size: 300%;
-
-  transition: all 0.4s ease;
+  transition: 0.4s;
 }
 
 button:hover {
   background-position: right;
-  transform: scale(1.15);
-  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  transform: scale(1.2);
 }
 
 /* Table */
@@ -95,30 +77,25 @@ table {
   width: 100%;
   margin-top: 20px;
   border-collapse: collapse;
-  animation: fadeIn 1s ease;
+  animation: fadeIn 1s;
 }
 
-/* Table header */
 th {
-  background: linear-gradient(45deg, #ff00cc, #3333ff);
-  color: white;
+  background: linear-gradient(45deg, cyan, blue);
 }
 
-/* Table cells */
 th, td {
   padding: 10px;
-  border: 1px solid rgba(255,255,255,0.3);
 }
 
 /* Row hover */
 tr:hover {
   background: rgba(255,255,255,0.2);
-  transform: scale(1.03);
-  transition: 0.3s;
+  transform: scale(1.05);
 }
 
-/* Fade animation */
+/* Fade */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {opacity:0;}
+  to {opacity:1;}
 }
