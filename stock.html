@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock Update</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>Stock Update</h2>
+
+  <input type="text" id="itemName" placeholder="Item Name">
+  <input type="number" id="quantity" placeholder="Quantity">
+  <button onclick="addItem()">Add Item</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Qty</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="stockTable"></tbody>
+  </table>
+
+  <button onclick="goTo('home.html')">Back</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
