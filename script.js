@@ -1,31 +1,50 @@
-// ===== script.js =====
-
-// Load stock from localStorage
+// ===== STOCK DATA =====
 let stock = JSON.parse(localStorage.getItem("stock")) || [];
 
-// LOGIN
+// ===== PAGE TRANSITION (LOAD) =====
+document.addEventListener("DOMContentLoaded", () => {
+  // Overlay animation
+  const overlay = document.createElement("div");
+  overlay.className = "page-transition";
+  document.body.appendChild(overlay);
+
+  setTimeout(() => {
+    overlay.remove();
+  }, 600);
+
+  // Load data safely
+  displayItems();
+  displayReport();
+});
+
+// ===== LOGIN =====
 function login() {
   const u = document.getElementById("username")?.value;
   const p = document.getElementById("password")?.value;
 
   if (u === "admin" && p === "1234") {
-    window.location = "home.html";
+    goTo("home.html");
   } else {
     alert("Invalid login");
   }
 }
 
-// LOGOUT
+// ===== LOGOUT =====
 function logout() {
-  window.location = "index.html";
+  goTo("index.html");
 }
 
-// NAVIGATION
+// ===== SMOOTH PAGE NAVIGATION =====
 function goTo(page) {
-  window.location = page;
+  document.body.style.opacity = "0";
+  document.body.style.transition = "0.4s";
+
+  setTimeout(() => {
+    window.location = page;
+  }, 400);
 }
 
-// ADD ITEM
+// ===== ADD ITEM =====
 function addItem() {
   const name = document.getElementById("itemName")?.value;
   const qty = document.getElementById("quantity")?.value;
@@ -40,52 +59,51 @@ function addItem() {
 
   displayItems();
 
+  // Clear fields
   document.getElementById("itemName").value = "";
   document.getElementById("quantity").value = "";
 }
 
-// DISPLAY STOCK (FIXED)
+// ===== DISPLAY STOCK =====
 function displayItems() {
   const table = document.getElementById("stockTable");
-
-  if (!table) return;   // ✅ prevents error on other pages
+  if (!table) return;
 
   table.innerHTML = "";
 
   stock.forEach((item, i) => {
-    table.innerHTML += `<tr>
-      <td>${item.name}</td>
-      <td>${item.qty}</td>
-      <td><button onclick="deleteItem(${i})">Delete</button></td>
-    </tr>`;
+    table.innerHTML += `
+      <tr style="animation: fadeIn 0.5s">
+        <td>${item.name}</td>
+        <td>${item.qty}</td>
+        <td>
+          <button onclick="deleteItem(${i})">Delete</button>
+        </td>
+      </tr>
+    `;
   });
 }
 
-// DELETE ITEM
+// ===== DELETE ITEM =====
 function deleteItem(i) {
   stock.splice(i, 1);
   localStorage.setItem("stock", JSON.stringify(stock));
   displayItems();
 }
 
-// REPORT (FIXED)
+// ===== DISPLAY REPORT =====
 function displayReport() {
   const table = document.getElementById("reportTable");
-
-  if (!table) return;   // ✅ prevents error
+  if (!table) return;
 
   table.innerHTML = "";
 
   stock.forEach(item => {
-    table.innerHTML += `<tr>
-      <td>${item.name}</td>
-      <td>${item.qty}</td>
-    </tr>`;
+    table.innerHTML += `
+      <tr style="animation: fadeIn 0.5s">
+        <td>${item.name}</td>
+        <td>${item.qty}</td>
+      </tr>
+    `;
   });
 }
-
-// AUTO LOAD (SAFE)
-window.onload = function () {
-  displayItems();
-  displayReport();
-};
